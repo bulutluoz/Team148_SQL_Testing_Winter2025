@@ -103,6 +103,112 @@ INSERT INTO personel ()
 VALUES ('1', 'Hamza' , 'KAVAS' , '1993-03-01' , 'QA' , '50000');      
 
 
+/*  
+    ========================  EXTRA ========================
+    Icerisinde urun id, musteri isim ve urun isim columnlari
+    olan bir musteriler tablosu create ediniz. 
+    =========================================================
+ */
+
+
+CREATE TABLE musteriler(
+	urun_id INT,
+    musteri_isim VARCHAR(40),
+    urun_isim VARCHAR(40)
+);
+
+-- musteriler tablosundaki tum datalari goruntuleyin
+
+SELECT * FROM musteriler;
+
+INSERT INTO musteriler VALUES (10, 'Mark', 'Orange');
+INSERT INTO musteriler  VALUES (10, 'Mark', 'Orange');
+INSERT INTO musteriler VALUES (20, 'John', 'Apple');
+INSERT INTO musteriler VALUES (30, 'Amy', 'Palm');
+INSERT INTO musteriler VALUES (20, 'Mark', 'Apple');
+INSERT INTO musteriler VALUES (10, 'Adem', 'Orange');
+INSERT INTO musteriler VALUES (40, 'John', 'Apricot');
+INSERT INTO musteriler VALUES (20, 'Eddie', 'Apple');
+
+
+-- musteriler tablosundaki musteri_isim lerini listeleyin
+
+SELECT musteri_isim FROM musteriler;
+
+ /*  
+    ========================  EXTRA ========================
+    Icerisinde ulke_adi, ulke_adi_uzun_yazilis, ISO_Kodu, 
+    ulke_kodu, baskent_turkce ve baskent_ingilizce columnlari 
+    olan bir ulkeler tablosu create ediniz. 
+    =========================================================
+ */
+ 
+ 
+ CREATE TABLE ulkeler(
+	ulke_adi VARCHAR(50), 
+    ulke_adi_uzun_yazilis VARCHAR(50), 
+    ISO_Kodu CHAR(3), 
+    ulke_kodu CHAR(2), 
+    baskent_turkce VARCHAR(50),
+    baskent_ingilizce VARCHAR(50)
+ );
+ 
+ SELECT * FROM ulkeler;
+ 
+insert into ulkeler values('Afganistan', 'Afganistan İslam Cumhuriyeti', 'AFG', 'AF', 'Kâbil', 'Kabul');
+insert into ulkeler values('Almanya', 'Almanya Federal Cumhuriyeti', 'DEU', 'DE', 'Berlin', 'Berlin');
+insert into ulkeler values('Andora', 'Andora Prensliği', 'AND', 'AD', 'Andora La Vella', 'Andorra la Vella');
+insert into ulkeler values('Arjantin', 'Arjantin Cumhuriyeti', 'ARC', 'AR', 'Buenos Aires', 'Buenos Aires');
+insert into ulkeler values('Arnavutluk', 'Arnavutluk Cumhuriyeti', 'ALB', 'AL', 'Tiran', 'Tiran');
+insert into ulkeler values('Azerbaycan', 'Azerbaycan Cumhuriyeti', 'AZE', 'AZ', 'Bakü', 'Baku');
+insert into ulkeler values('Bahama Adaları', 'Bahama Milletler Topluluğu', 'BHS', 'BS', 'Nassau', 'Nassau');
+insert into ulkeler values('Bahreyn', 'Bahreyn Krallığı', 'BHR', 'BH', 'Manama', 'Manama');
+insert into ulkeler values('Bangladeş', 'Bangladeş Halk Cumhuriyeti', 'BGD', 'BD', 'Dakka', 'Dhaka');
+insert into ulkeler values('Belçika', 'Belçika Krallığı', 'BEL', 'BE', 'Brüksel', 'Brussels');
+
+
+-- ulke adi ve ulke kodu sutunlarini listeleyin
+SELECT ulke_adi,ulke_kodu FROM ulkeler;
+
+-- ulke baskent isimlerini turkce ve ingilizce olarak listeleyin
+SELECT baskent_turkce ,baskent_ingilizce FROM ulkeler;
+
+
+/*  
+    ========================  EXTRA ========================
+    Icerisinde ulke_adi, baskent_turkce ve baskent_nufusu columnlari olan 
+    bir baskentler tablosu create ediniz. 
+    =========================================================
+ */
+ 
+ CREATE TABLE baskentler (
+	ulke_adi VARCHAR(50), 
+    baskent_turkce VARCHAR(50),
+    baskent_nufusu INT
+ );
+ 
+ -- tum tabloyu goruntuleyin
+ SELECT * FROM baskentler;
+ 
+ /*  
+========================  EXTRA ========================
+ baskentler tablosuna null deger olmadan coklu veri girisi saglayiniz.
+=========================================================
+ */
+
+insert into baskentler values('Afganistan', 'Kâbil', '3140853');
+insert into baskentler values('Almanya', 'Berlin', '3520000');
+insert into baskentler values('Andora', 'Andora La Vella', '22884');
+insert into baskentler values('Arjantin', 'Buenos Aires', '2891082');
+insert into baskentler values('Arnavutluk', 'Tiran', '763634');
+insert into baskentler values('Azerbaycan', 'Bakü', '2204200');
+insert into baskentler values('Bahama Adaları', 'Nassau', '248948');
+insert into baskentler values('Bahreyn', 'Manama', '140616');
+insert into baskentler values('Bangladeş', 'Dakka', '8906000');
+insert into baskentler values('Belçika', 'Brüksel', '1080790');
+ 
+ 
+ 
 
 
 
