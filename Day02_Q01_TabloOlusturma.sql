@@ -59,6 +59,9 @@ CREATE TABLE kitaplar (
     
     Team148.kitaplar'dan herseyi getir
     
+    SQL syntax yapisi gundelik konusma diline yaklastirilmaya calisiliyor (INGILIZCE)
+    Syntax yapisini tersten okudugunuzda mantikli bir cumle ile karsilasirsiniz.
+    
 */
 SELECT * FROM Team148.kitaplar;
 
@@ -75,6 +78,22 @@ SELECT * FROM Team148.kitaplar;
     olan bir personel tablosu create ediniz. 
     =========================================================
  */
+ 
+ CREATE TABLE personel (
+	personel_id INT,
+	adi VARCHAR(40),
+    soyadi VARCHAR(40),
+    dogum_tarihi DATE,
+    pozisyon VARCHAR(40),
+    maas INT
+ );
+ 
+ SELECT * FROM personel;
+ 
+ -- Tablo uzerindeki column isimlerini filtreleyerekte SELECT sorgusu ile calistirabilirim.
+
+  SELECT soyadi,personel_id FROM personel;
+ 
  
  
 
