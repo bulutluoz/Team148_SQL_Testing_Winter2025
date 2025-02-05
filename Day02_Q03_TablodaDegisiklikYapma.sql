@@ -101,6 +101,79 @@ MODIFY COLUMN  sütun_adi + yeniDataType;
  SELECT * FROM personel;
  
  
+ /*
+===============================================
+		ALTER TABLE - Sütun Adını Değiştirme
+===============================================
+*/
+/*
+
+/*
+*************** SYNTAX ***************
+ALTER TABLE tablo_adi 
+RENAME COLUMN  eskiSütunAdi TO yeniSütunAdi;
+*/
+
+/*  
+========================  SORU-6 ========================
+ Personel tablosundaki pozisyon column'in adini sorumluluk olarak degistiriniz.
+=========================================================
+ */
+ 
+ 
+ ALTER TABLE personel 
+ RENAME COLUMN pozisyon TO sorumluluk;
+ 
+ SELECT * FROM personel;
+ 
+ 
+ /*  
+========================  SORU-8 ========================
+ personel tablosundaki soyadi column'in adini lastname olarak degistiriniz.
+=========================================================
+ */
+ 
+ALTER TABLE personel
+RENAME COLUMN soyadi TO lastname;
+
+/*
+===============================================
+      ALTER TABLE - Sütun Silme
+===============================================
+*/
+
+/*
+*************** SYNTAX ***************
+ALTER TABLE tablo_adi 
+DROP COLUMN  sütun_adi;
+*/
+ 
+ /*  
+========================  SORU-9 ========================
+ Personel tablosundaki ogrenci maas column'ini siliniz.
+=========================================================
+ */
+ 
+ ALTER TABLE personel
+ DROP COLUMN maas;
+ 
+ 
+/*  
+========================  SORU-10 ========================
+      Kitaplar tablosundaki sayfa sayisi column'ini siliniz.
+=========================================================
+ */
+ 
+ ALTER TABLE kitaplar
+ DROP COLUMN sayfa_sayisi;
+ 
+ SELECT * FROM kitaplar;
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
