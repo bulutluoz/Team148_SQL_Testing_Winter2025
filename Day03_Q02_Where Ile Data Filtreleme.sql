@@ -221,7 +221,7 @@ WHERE isim = 'ayse' AND soyisim = 'kaya';
  ===============================================*/
  
  /*
-BETWEEN anahtar kelimesi, SQL'de bir aralıktaki değerleri seçmek için kullanılır.
+ BETWEEN anahtar kelimesi, SQL'de bir aralıktaki değerleri seçmek için kullanılır.
  Bu anahtar kelime genellikle sayısal değerler, tarihler ve metinlerle kullanılır
  ve belirtilen iki değer arasındaki tüm değerleri kapsar. 
  BETWEEN ile belirlenen aralık her iki uç değeri de içerir, yani "başlangıç" ve "bitiş"
@@ -240,14 +240,83 @@ WHERE sütun_adı BETWEEN değer1 AND değer2;
  Kisiler tablosundan yaşı 25 ile 35 arasında olan kişileri listeleyiniz.
  =========================================================
  */
+ 
+ SELECT * FROM kisiler
+ WHERE yas BETWEEN 25 AND 35;
 
  
  
+ /*  
+========================  SORU-5 ========================
+ Kisiler tablosundan yaşı 25 ile 35 arasında olan ve Ankara'da yaşayan kişileri listeleyiniz.
+=========================================================
+ */ 
+ 
+ SELECT * FROM kisiler
+ WHERE yas BETWEEN 25 AND 35
+ AND sehir = 'Ankara';
+ 
+ /*  
+ ======================== Extra ========================
+   Kisiler tablosundan ismi Adem ile Aylin arasında olan ve 
+   Ankara'da yaşayan kişileri listeleyiniz.
+ =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE isim BETWEEN 'Adem' AND 'Aylin'
+ AND sehir = 'Ankara';
+ 
+ -- BETWEEN yerine iki tane kucuk buyuk isareti Kullanilabilir mi ?
+ 
+ SELECT * FROM kisiler
+ WHERE isim >= 'Adem' AND isim<= 'Aylin'
+ AND sehir = 'Ankara';
+ 
+ /*
+===============================================
+        Mantiksal Operatorler / OR
+===============================================*/
+
+/*
+1- "OR" operatörü, birden fazla koşuldan en az birinin karşılanması 
+   gerektiğinde kullanılır.
+2- Koşullardan herhangi biri TRUE ise, sonuç TRUE döner.
+3- Tüm koşullar FALSE ise, sonuç FALSE olur.
+
+Örnek: SELECT * FROM tablo_adi WHERE sütun1 = 'değer1' OR 
+sütun2 = 'değer2' sorgusu, sütun1'in
+'değer1' değerine eşit olduğu veya sütun2'nin 'değer2' 
+değerine eşit olduğu kayıtları seçer.
+*/
+
+
+/*
+*************** SYNTAX ***************
+SELECT * FROM tablo_adı 
+WHERE 1sütun_adı = 1 
+OR 2sütun_adı = 2 ;
+*/
+
+
+/*  
+========================  SORU-6 ========================
+ Kisiler tablosundan yaşı 22 veya 35 olan kişileri listeleyiniz.
+=========================================================
+ */
+ 
+SELECT * FROM kisiler
+WHERE yas=22 OR yas=35;
  
  
+  /*  
+========================  SORU-1 ========================
+ Kisiler tablosundan 29 yaşından büyük olan veya Ankara'da yaşayan kişileri listeleyiniz.
+=========================================================
+ */
  
- 
- 
+ SELECT * FROM kisiler
+ WHERE yas > 29 OR sehir = 'Ankara';
  
  
  
