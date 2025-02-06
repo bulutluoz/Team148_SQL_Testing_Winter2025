@@ -319,6 +319,147 @@ WHERE yas=22 OR yas=35;
  WHERE yas > 29 OR sehir = 'Ankara';
  
  
+ /*  
+========================  SORU-7 ========================
+ Kisiler tablosundan İstanbul, Ankara veya İzmir'de yaşayan kişileri listeleyiniz.
+=========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE sehir = 'Ankara' OR sehir = 'Istanbul' OR sehir = 'Izmir';
+ 
+ 
+ /*
+===============================================
+                  IN OPERATORU
+===============================================*/
+/*
+
+/*
+ SQL'de IN operatörü, belirli bir sütunun değerlerini belirtilen bir değerler
+ listesiyle karşılaştırmak için kullanılır. 
+ Bu operatör, sorgulanacak değerlerin
+ bir listesini parantez içinde alır ve belirtilen sütunun değeri bu listedeki 
+ herhangi bir değerle eşleşirse, o satırı sonuç kümesine dahil eder. 
+ IN operatörü, birden çok OR koşulunu daha okunaklı 
+ ve kısa bir şekilde yazmanın bir yoludur.
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT sütun_adları
+FROM tablo_adi
+WHERE sütun_adi IN (değer1, değer2, ..., değerN);
+*/
+
+/*  
+========================  SORU-8 ========================
+ Kisiler tablosundan İstanbul, Ankara veya İzmir'de yaşayan kişileri listeleyiniz.
+=========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE sehir IN ('Istanbul', 'Ankara', 'Izmir');
+ 
+ 
+ /*  
+========================  SORU-9 ========================
+    Kisiler tablosundan adı 'Ahmet', 'Mehmet' veya 'Ayşe' olan kişileri listeleyiniz.
+=========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE isim IN ('Ahmet', 'Mehmet', 'Ayşe');
+ 
+ /*
+ ===============================================
+        Mantiksal Operatorler / NOT
+ ===============================================*/
+ 
+/*
+1- "NOT" operatörü, bir koşulun sonucunu tersine çevirmek için kullanılır.
+2- Eğer koşul TRUE ise, "NOT" operatörü sonucu FALSE yapar; koşul FALSE ise, sonucu TRUE yapar.
+3- Genellikle "NOT IN", "NOT EXISTS", "NOT LIKE" gibi ifadelerde kullanılır.
+
+Örnek: SELECT * FROM tablo_adi WHERE NOT sütun1 = 'değer1' sorgusu, sütun1'in 
+'değer1' değerine eşit olmayan tüm kayıtları seçer.
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT * FROM tablo_adı 
+WHERE NOT sütun_adı = 1;
+*/
+
+/*  
+========================  SORU-11 ========================
+ Kisiler tablosundan  İstanbul'da yaşamayan kişileri listeleyiniz.
+=========================================================
+ */
+ 
+ 
+ SELECT * FROM kisiler
+ WHERE sehir != 'istanbul';
+ 
+ SELECT * FROM kisiler
+ WHERE sehir <> 'istanbul';
+ 
+ SELECT * FROM kisiler
+ WHERE NOT sehir = 'istanbul';
+ 
+ /*  
+========================  SORU-11 ========================
+ Kisiler tablosundan  İstanbul, Izmir veya Ankara'da yaşamayan kişileri listeleyiniz.
+=========================================================
+ */
+ 
+ 
+ SELECT * FROM kisiler
+ WHERE sehir != 'Ankara' AND sehir != 'Istanbul' AND sehir != 'Izmir';
+ 
+ /*
+ SELECT * FROM kisiler
+ WHERE sehir != 'Ankara' OR sehir != 'Istanbul' OR sehir != 'Izmir';
+ bu kod yanlis olur
+ Cunku OR operatoru iyimserdir
+ ornegin sehri Ankara olan bir kisi icin 2. ve 3. karsilastirmalar TRUE verir
+         OR operatoru 1 tane bile true gorse sonucu true yapar ve listeye ekler 
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE NOT sehir IN ('Ankara', 'Istanbul', 'Izmir');
+ 
+ 
+ /*  
+========================  SORU-12 ========================
+ Kisiler tablosundan 30 yaşından büyük olmayan kişileri listeleyiniz.
+=========================================================
+ */
+ 
+SELECT * FROM kisiler
+WHERE NOT yas >30;
+
+
+SELECT * FROM kisiler
+WHERE yas < 31;
+
+SELECT * FROM kisiler
+WHERE yas <= 30;
+ 
+ 
+ /*  
+ ========================  SORU-14 ========================
+ Kisiler tablosundan soyadı 'Yılmaz' veya 'Kara' olmayan kişileri listeleyiniz.
+ =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE NOT soyisim IN ('Yılmaz','Kara');
+ 
+ 
+ 
+ 
+ 
  
  
  
