@@ -97,6 +97,45 @@ WHERE isim LIKE '%A';
  
 SELECT * FROM maaslar
 WHERE isim LIKE '_e%';
+
+/*  
+=============================  SORU-5 =============================
+    Personel tablosundan Isminin 2. harfi 'e' olup diger harflerinde 'y' 
+    olan personeli listeleyiniz
+===================================================================
+ */
+ 
+SELECT * FROM maaslar
+WHERE isim LIKE '_e%' AND isim LIKE '%y%';
+ 
+
+
+ /*  
+=============================  SORU-6 =============================
+    Personel tablosundan maasi 5 haneli olan personel isimlerini listeleyiniz
+===================================================================
+ */
+ 
+ SELECT isim FROM maaslar
+ WHERE maas LIKE '_____';
+ 
+/*  
+=============================  SORU-7 =============================
+    Personel tablosundan isminin 1. harfi 'a' ve 7. harfi 'a' olan 
+    personeli listeleyiniz
+===================================================================
+ */
+ 
+ SELECT * FROM maaslar
+ WHERE isim LIKE 'a%' AND isim LIKE '______a%';
+ 
+ 
+ SELECT * FROM maaslar
+ WHERE isim LIKE 'a_____a%';
+ 
+ 
+ 
+ 
  
  
  
