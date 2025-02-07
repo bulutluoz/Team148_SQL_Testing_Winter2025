@@ -54,6 +54,8 @@ WHERE kelime LIKE 'h%' AND harf_sayisi>3 ;
 ===================================================================
  */
  
+ SELECT kelime FROM kelimeler
+ WHERE REGEXP_LIKE (kelime,'^h.t$','c');
  
  
  
@@ -63,7 +65,8 @@ WHERE kelime LIKE 'h%' AND harf_sayisi>3 ;
     olan 3 harfli kelimeleri (h ile t kucuk harfli olanlari) listeleyiniz
 ===================================================================
  */
- 
+ SELECT kelime FROM kelimeler
+ WHERE REGEXP_LIKE (kelime,'^h[0-9]t$','c');
  
  
  
@@ -74,7 +77,8 @@ WHERE kelime LIKE 'h%' AND harf_sayisi>3 ;
 ===================================================================
  */
  
- 
+SELECT kelime FROM kelimeler
+WHERE  REGEXP_LIKE (kelime,'^h[A-Z]t$','c');
  
  
  /*  
@@ -83,3 +87,15 @@ WHERE kelime LIKE 'h%' AND harf_sayisi>3 ;
     kelimeleri ve id'lerini listeleyiniz
 ===================================================================
  */
+ 
+SELECT kelime, id FROM kelimeler
+WHERE  REGEXP_LIKE (kelime,'^.O.$','c');
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
