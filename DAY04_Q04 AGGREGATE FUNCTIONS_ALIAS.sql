@@ -113,6 +113,158 @@ SELECT COUNT(urun_adi) AS "Urun_Sayisi" FROM satis_raporu;
 SELECT COUNT(DISTINCT urun_adi) AS Tekrarsiz_Urun_Sayisi FROM satis_raporu;
 
 
+ /*  
+=============================  SORU-2 =============================
+    Satis raporu tablosundaki satisi yapilan toplam urun sayisi nedir.
+===================================================================
+ */
+ 
+SELECT COUNT(id) AS toplam_urun_sayisi
+FROM satis_raporu;
+
+
+/*  
+=============================  SORU-3 =============================
+    Satis raporu tablosundaki fiyati 1000 den az olan urunlerin sayisi nedir.
+===================================================================
+*/
+
+SELECT COUNT(urun_adi) AS 1000_den_ucuz_urun_adedi 
+FROM satis_raporu
+WHERE birim_fiyati < 1000;
+
+/* 
+===============================================
+		       AGGREGATE FUNCTIONS / SUM()
+===============================================
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT SUM(sütun_adı) 
+FROM tablo_adı;
+*/
+
+/*  
+=============================  SORU-4 =============================
+    Satis raporu tablosundaki toplam satis miktari nedir?
+===================================================================
+*/
+
+SELECT SUM(satis_miktari) AS toplam_satilan_urun_sayisi
+FROM satis_raporu;
+
+/*  
+=============================  SORU-5 =============================
+    Satis raporu tablosundaki laptoplarin toplam satis geliri nedir?
+===================================================================
+*/
+
+SELECT SUM(satis_miktari * birim_fiyati) AS Laptop_satis_toplami
+FROM satis_raporu
+WHERE urun_adi = 'Laptop';
+
+
+/*  
+=============================  SORU-6 =============================
+    Satis raporu tablosundaki 2023 Ocak ayinda yapilan toplam satis 
+    geliri nedir?
+===================================================================
+*/
+
+SELECT SUM(satis_miktari * birim_fiyati) AS ocak_2023_toplam_gelir
+FROM satis_raporu
+WHERE satis_tarihi BETWEEN '2023-01-01' AND '2023-01-31';
+
+
+-- alternatif Yol olarak satis_tarihinden year ve mont degerleri filtrelenebilir
+SELECT SUM(satis_miktari * birim_fiyati) AS ocak_2023_toplam_gelir
+FROM satis_raporu
+WHERE  YEAR(satis_tarihi) = 2023 AND MONTH(satis_tarihi) = 1;
+
+/* 
+===============================================
+		       AGGREGATE FUNCTIONS / AVG()
+===============================================
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT AVG(sütun_adı) 
+FROM tablo_adı;
+*/
+
+/*  
+=============================  SORU-7 =============================
+    Satis raporu tablosundaki urunlerin ortalama birim fiyati nedir?
+===================================================================
+*/
+
+SELECT AVG(birim_fiyati) AS ortalama_birim_fiyati 
+FROM satis_raporu;
+
+/*  
+=============================  SORU-8 =============================
+    Satis raporu tablosundaki laptop ve tabletlerin ortalama 
+    birim fiyati nedir?
+===================================================================
+*/
+
+SELECT AVG(birim_fiyati) AS ortalama_birim_fiyati
+FROM satis_raporu
+WHERE urun_adi IN ('Laptop','Tablet');
+
+
+/* 
+===============================================
+	    AGGREGATE FUNCTIONS / MAX() & MIN()
+===============================================*/
+   
+  /*
+*************** SYNTAX ***************
+SELECT MAX(sütun_adı) / MIN(sütun_adı)
+FROM tablo_adı;
+*/ 
+
+/*  
+=============================  SORU-10 =============================
+    Satis raporu tablosundaki en dusuk birim fiyati nedir ? 
+===================================================================
+*/
+
+SELECT MIN(birim_fiyati) AS en_dusuk_birim_fiyati
+FROM satis_raporu;
+
+
+/*  
+=============================  SORU-11 =============================
+    Satis raporu tablosundaki en eski ve en yeni satis tarihleri nelerdir?   
+===================================================================
+*/
+
+-- urun_adi ve satis_miktari sutunlarini yazdirin
+SELECT urun_adi , satis_miktari FROM satis_raporu;
+
+-- satis_tarihi ve satis_tarihi sutunlarini yazdirin
+SELECT satis_tarihi , satis_tarihi FROM satis_raporu;
+
+
+SELECT MAX(satis_tarihi) AS en_yeni_satis_tarihi , MIN(satis_tarihi) AS en_eski_satis_tarihi
+FROM satis_raporu;
+
+
+/*  
+=============================  SORU-12 =============================
+    Satis raporu tablosundaki en fazla satilan urun miktari nedir?   
+===================================================================
+*/
+
+SELECT MAX(satis_miktari) AS satis_miktari_en_fazla_olan_urun
+FROM satis_raporu;
+
+
+
+
 
 
 
