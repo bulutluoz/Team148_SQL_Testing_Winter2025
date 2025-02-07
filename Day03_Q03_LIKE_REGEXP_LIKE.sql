@@ -279,9 +279,6 @@ WHERE REGEXP_LIKE (kelime, 'ot|at', 'i');
  
  SELECT kelime FROM kelimeler
  WHERE REGEXP_LIKE (kelime, 't$|m$','i');
-
-
- 
  
  /*  
 =============================  SORU-10 =============================
