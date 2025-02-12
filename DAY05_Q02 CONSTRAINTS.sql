@@ -179,6 +179,23 @@ CREATE TABLE urunler (
 -------------------------------------------------------------------
 */
 
+CREATE TABLE bebeler
+    (
+        id INT PRIMARY KEY,
+        isim VARCHAR(40),
+        iletisim_no VARCHAR(15)
+    );
+    
+CREATE TABLE notlar
+    (
+        bebe_id INT,
+        puan INT,
+        CONSTRAINT bebe_id_foreignKey
+        FOREIGN KEY (bebe_id)
+        REFERENCES bebeler (id)
+	);
+
+
 
 
  /*
@@ -196,6 +213,25 @@ oluşturun ve gerekli Foreign Key'leri tanımlayın.
 -------------------------------------------------------------------
 */ 
  
+ CREATE TABLE ogrenciler
+    (
+        ogrenci_no CHAR(6) PRIMARY KEY,
+        isim VARCHAR(40),
+        bolum VARCHAR(40)
+    );
+CREATE TABLE dersler
+    (
+        ders_kodu CHAR(6) PRIMARY KEY,
+        ders_adi VARCHAR(40),
+        kredi CHAR(1)
+	);
+CREATE TABLE ogrenci_dersleri
+    (
+		ogrenci_no CHAR(6),
+        ders_kodu CHAR(6),
+        CONSTRAINT ogrenci_no_foreign_key FOREIGN KEY(ogrenci_no) REFERENCES ogrenciler (ogrenci_no),
+		CONSTRAINT ders_kodu_foreign_key FOREIGN KEY(ders_kodu ) REFERENCES dersler (ders_kodu)
+	);
  
  
  
