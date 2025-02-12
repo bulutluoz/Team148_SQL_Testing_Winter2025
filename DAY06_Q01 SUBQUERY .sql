@@ -242,6 +242,36 @@ toplam kac sehirde bulundugunu listeleyen bir QUERY yaziniz.
 ----------------------------------------------------------------
 */
 
+SELECT sirket_id , sirket , ( SELECT COUNT( DISTINCT sehir) 
+							  FROM calisanlar 
+                              WHERE calisanlar.sirket = sirketler.sirket  ) AS sehir_sayisi
+FROM sirketler
+WHERE sirket_id > 101;
+
+
+/*
+----------------------------------------------------------------
+SORU 5- Her sirketin ismini,personel sayisini ve personelin 
+aldigi max. ve min. maasi listeleyen bir QUERY yazin.
+----------------------------------------------------------------
+*/ 
+
+
+SELECT sirket, calisanlar_sayisi, 
+								(SELECT MAX(maas)
+								 FROM calisanlar
+								 WHERE calisanlar.sirket = sirketler.sirket) AS max_maas , 
+                                (SELECT MIN(maas)
+								 FROM calisanlar
+								 WHERE calisanlar.sirket = sirketler.sirket) AS min_maas
+FROM sirketler;
+
+
+
+
+
+
+
 
 
 
