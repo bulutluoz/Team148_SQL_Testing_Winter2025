@@ -148,19 +148,129 @@ UPDATE tedarik
 SET irtibat = 'Veli Can'
 WHERE isim = 'LG' ;
 
+/*  
+Urun tablosundan Ali Can'in aldigi urunun ismini, 
+tedarik tablosunda irtibat Merve Temiz olan 
+sirketin ismi ile degistirin. 
+*/
+
+
+UPDATE urun
+SET urun_ismi = (SELECT isim
+				 FROM tedarik
+                 WHERE irtibat = 'Merve Temiz')
+WHERE musteri_isim = 'Ali Can';
+
+
+-- Urun tablosundaki TV satin alan musterinin ismini, 
+-- tedarik tablosundaki IBM'in irtibat'i ile degistirin.
+
+UPDATE urun
+SET musteri_isim = (
+						SELECT irtibat
+                        FROM tedarik
+                        WHERE isim = 'IBM'
+					) 
+WHERE urun_ismi = 'TV' ;
+
+SELECT * FROM tedarik;
+SELECT * FROM urun;
+
+
+-- urun id'si 1001 olan urun ismini, id'si 102 olan 
+-- sirketin ismi ile degistirin.
+
+UPDATE urun
+SET urun_ismi=(
+				SELECT isim 
+                FROM tedarik 
+                WHERE id='102'
+                )
+WHERE urun_id='1001';
+
+
+-- urun tablosuna 104,1005, Huawei , Ruya Koca kaydini ekleyin
+
+INSERT INTO urun VALUES(104, 1005,'Huawei', 'Ruya Koca');
+
+-- urun tablosu child tablo oldugundan once FOREIGN KEY olan tedarikci_id 'nin
+-- parent tabloya eklenmesi gerekir
+
+INSERT INTO tedarik VALUES(104, 'Huawei', 'Serat Yildiz');
+
+
+
+-- urun tablosunda musteri_isim degeri Fatma olan tedarikcinin
+-- tedarikci_id'sini 110 yapin
+
+UPDATE urun
+SET tedarikci_id = 110
+WHERE musteri_isim = 'Fatma';
+
+-- urun tablosu child tablo oldugundan once FOREIGN KEY olan tedarikci_id 110'nun
+-- parent tabloya eklenmesi gerekir
+INSERT INTO tedarik VALUES(110, 'XIAOMI', 'Hamza KAVAS');
+
+
+CREATE TABLE cocuklar(
+id INT,
+isim VARCHAR(20),
+veli_isim VARCHAR(10),
+grade DOUBLE,
+CONSTRAINT id_pk PRIMARY KEY (id)
+);
+
+
+INSERT INTO cocuklar VALUES
+ (123, 'Ali Can', 'Hasan',75), 
+ (124, 'Merve Gul', 'Ayse',85), 
+ (125, 'Kemal Yasa', 'Hasan',85),
+ (126, 'Rumeysa Aydin', 'Zeynep',85),
+ (127, 'Oguz Karaca', 'Tuncay',85),
+ (128, 'Resul Can', 'Tugay',85),
+ (129, 'Tugay Kala', 'Osman',45);
+ 
+
+CREATE TABLE puanlar
+(
+	ogrenci_id INT,
+	ders_adi VARCHAR(10),
+	yazili_notu DOUBLE,
+	CONSTRAINT puanlar_fk 
+	FOREIGN KEY (ogrenci_id) 
+	REFERENCES cocuklar (id)
+);
+
+INSERT INTO puanlar VALUES ('123','kimya',75); 
+INSERT INTO puanlar VALUES ('124','fizik',65); 
+INSERT INTO puanlar VALUES ('125','tarih',90); 
+INSERT INTO puanlar VALUES ('126','kimya',87); 
+INSERT INTO puanlar VALUES ('127','tarih',69); 
+INSERT INTO puanlar VALUES ('128','kimya',93); 
+INSERT INTO puanlar VALUES ('129','fizik',25); 
+
+SELECT * FROM cocuklar;
+SELECT * FROM puanlar;
+
+
+-- Tum cocuklarin gradelerini puanlar tablosundaki 
+-- yazili_notu ile update edin. 
+
+UPDATE cocuklar
+SET grade = (SELECT yazili_notu
+			 FROM puanlar
+             WHERE puanlar.ogrenci_id = cocuklar.id );
 
 
 
 
+-- Tum cocuklarin veli isimlerini puanlar tablosundaki 
+-- ders_adi ile update edin.
 
-
-
-
-
-
-
-
-
+UPDATE cocuklar
+SET veli_isim = ( SELECT ders_adi
+				  FROM puanlar
+                  WHERE puanlar.ogrenci_id = cocuklar.id) ;
 
 
 
