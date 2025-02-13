@@ -287,6 +287,13 @@ ORDER BY b.bolum_isim DESC,p.maas ASC;
   siralayarak listeleyiniz. 
   */ 
   
+SELECT p.personel_isim, b.bolum_isim, p.maas
+FROM bolumler b RIGHT JOIN personeller p
+ON b.bolum_id = p.bolum_id
+WHERE b.bolum_isim IN ('SATIS','MUDURLUK') AND p.maas > 2000
+ORDER BY b.bolum_isim, p.personel_isim ;
+  
+  
   
 
 
