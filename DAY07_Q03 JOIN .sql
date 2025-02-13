@@ -120,9 +120,79 @@ FROM  sirket sir LEFT JOIN siparisler sip
 ON sip.sirket_id = sir.sirket_id;
 
 
+/*=============================== RIGHT JOIN  ==================================
+    
+    RIGHT JOIN, 2. tablodan (sag tablo) SELECT ile ifade edilen sutunlara ait tum
+    satirlari getirir. 
+    Ancak, diger tablodan sadece ON ile belirtilen kosula uyan satirlari getirir. 
+    
+    1) Right Join'de ikinci tablodaki tum record'lar gosterilir.
+    2) Ikinci tablodaki datalara 1.tablodan gelen ek datalar 
+       varsa bu ek datalar ortak datalar icin gosterilir, 
+       ancak ortak olmayan datalar icin o kisimlar bos kalir.
+    
+        
+    Syntax
+    -----------
+    SELECT sutun1,sutun2....sutunN
+    FROM tablo1 RIGHT JOIN tablo2
+    ON tablo1.sutun = tablo2.sutun;
+    
+==============================================================================*/ 
+
+-- siparisler tablosundaki tum sirketleri ve bu sirketlere ait olan 
+-- siparis_id ve siparis_tarihleri listeleyen bir sorgu yaziniz.
+
+
+SELECT sir.sirket_isim, sip.siparis_id, sip.siparis_tarihi
+FROM  sirket sir RIGHT JOIN siparisler sip
+ON sip.sirket_id = sir.sirket_id;
 
 
 
+SELECT sir.sirket_isim, sip.siparis_id, sip.siparis_tarihi
+FROM  siparisler sip LEFT JOIN sirket sir 
+ON sip.sirket_id = sir.sirket_id;
+
+
+/*=============================== FULL JOIN  ==================================
+    
+    FULL JOIN (LEFT JOIN + UNION + RIGHT JOIN)
+    FULL JOIN her iki tablo icin secilen sutunlara ait olan 
+    satirlari getirmek icin kullanilir.
+    
+        
+    Syntax
+    -----------
+    SELECT sutun1,sutun2....sutunN
+    FROM tablo1 
+    LEFT JOIN tablo2
+    ON tablo1.sutun = tablo2.sutun;
+    UNION
+    SELECT sutun1,sutun2....sutunN
+    FROM tablo1 
+    RIGHT JOIN tablo2
+    ON tablo1.sutun = tablo2.sutun;    
+
+
+
+    FULL JOIN de iki tabloda var olan tum recordlar getirilir.
+    Bir tabloda olup obur tabloda olmayan recordlar bos kalir.
+
+    
+==============================================================================*/
+
+  -- sirket ve siparisler adindaki tablolarda yer alan tum sirket_id'leri icin, 
+  -- sirket_id, sirket_isim, siparis_id ve siparis_tarihleri'ni 
+  -- listeleyen bir query yaziniz
+
+SELECT sir.sirket_isim,sir.sirket_isim,sip.siparis_id,sip.siparis_tarihi
+FROM sirket sir LEFT JOIN siparisler sip
+ON sip.sirket_id = sir.sirket_id
+UNION
+SELECT sir.sirket_isim,sir.sirket_isim,sip.siparis_id,sip.siparis_tarihi
+FROM sirket sir RIGHT JOIN siparisler sip
+ON sip.sirket_id = sir.sirket_id;
 
 
 
